@@ -14,6 +14,7 @@
 	<table class="t1">
 		<thead>
 			<tr>
+				<th>Num</th>
 				<th>City</th>
 				<th>Gion</th>
 			</tr>
@@ -21,7 +22,8 @@
 		<tbody>
 			<c:forEach items="${requestScope.list}" var="w">
 			<tr>
-				<td>${pageScope.w.city}</td>
+				<td>${pageScope.w.num}</td>
+				<td><a href="./detail">${pageScope.w.city}</a></td>
 				<td>${pageScope.w.gion}</td>
 			</tr>
 			</c:forEach>
