@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.winter.home.member.MemberController;
-import com.winter.home.student.Student;
+import com.winter.home.student.StudentDTO;
 import com.winter.home.student.StudentControllar;
 import com.winter.home.student.StudentService;
 import com.winter.home.weather.WeatherController;

@@ -28,7 +28,7 @@
 			<c:forEach items="${requestScope.list}" var="student">
 			<tr>
 				<td>번호 : ${pageScope.student.num}</td>
-				<td>이름 : ${pageScope.student.name}</td>
+				<td><a href="./detail?num=${pageScope.student.num}">이름 : ${pageScope.student.name}</a></td>
 				<td>평균 : ${pageScope.student.avg}</td>
 			</tr>
 			</c:forEach>

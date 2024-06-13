@@ -11,9 +11,9 @@
 <body>
 	<h1>학생 한명 정보</h1>
 	<!-- getter의이름:get을 빼고 첫글자를 소문자로 바꾼것 -->
-	<h3>${requestScope.s.name}</h3>
-	<h3>${requestScope.s.num}</h3>
-	<h3>${requestScope.s.avg}</h3>
+	<h3>${requestScope.student.name}</h3>
+	<h3>${requestScope.student.num}</h3>
+	<h3>${requestScope.student.avg}</h3>
 	
 </body>
 </html>

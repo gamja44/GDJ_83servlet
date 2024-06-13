@@ -11,7 +11,7 @@
 <body>
 	<h1>날씨 정보 리스트</h1>
 	
-	<table class="t1">
+	<table class="tl">
 		<thead>
 			<tr>
 				<th>Num</th>
@@ -21,13 +21,16 @@
 		</thead>
 		<tbody>
 			<c:forEach items="${requestScope.list}" var="w">
-			<tr>
-				<td>${pageScope.w.num}</td>
-				<td><a href="./detail">${pageScope.w.city}</a></td>
-				<td>${pageScope.w.gion}</td>
-			</tr>
+				<tr>
+					<td>${pageScope.w.num}</td>
+					<td><a href="./detail?num=${pageScope.w.num}">${pageScope.w.city}</a></td>
+					<td>${pageScope.w.gion}</td>
+				</tr>
 			</c:forEach>
+			
 		</tbody>
+	
+	
 	</table>
 </body>
 </html>

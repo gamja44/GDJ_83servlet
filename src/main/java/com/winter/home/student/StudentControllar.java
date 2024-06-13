@@ -37,13 +37,13 @@ public class StudentControllar {
 		String method = request.getMethod();
 		
 		if(uri.equals("list")) {
-			List<Student> ar = studentService.getStudents();
+			List<StudentDTO> ar = studentService.getStudents();
 			request.setAttribute("list", ar);
 			action.setPath("/WEB-INF/views/student/list.jsp");
 			
 		}else if(uri.equals("add")) {
 			if(method.toUpperCase().equals("POST")) {
-				Student student = new Student();
+				StudentDTO student = new StudentDTO();
 				 String name = request.getParameter("name");
 				 System.out.println(name);
 				 student.setName(name);
@@ -68,10 +68,32 @@ public class StudentControllar {
 			
 			
 		}else if(uri.equals("detail")) {
-			Student student = this.studentService.makeStudent();
-			request.setAttribute("s", student);
-			action.setPath("/WEB-INF/views/student/detail.jsp");
+			
+			String num = request.getParameter("num");
+			StudentDTO studentDTO = new StudentDTO();
+			studentDTO.setNum(Integer.parseInt(num));
+			studentDTO = studentService.getDetail(studentDTO);
+			
+			if(studentDTO != null) {
+				request.setAttribute("student", studentDTO);
+				action.setPath("/WEB-INF/views/student/detail.jsp");
+			}else {
+				request.setAttribute("message", "정보가없습니다");
+				action.setPath("/WEB-INF/views/commons/message.jsp");
+			}
+		}else {
+			
 		}
 		return action;
+			
+			
+			
+			
+			
+			
+//			StudentDTO student = this.studentService.makeStudent();
+//			request.setAttribute("s", student);
+//			action.setPath("/WEB-INF/views/student/detail.jsp");
+		
 	}
 }
