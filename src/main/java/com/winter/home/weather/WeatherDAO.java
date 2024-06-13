@@ -4,9 +4,13 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
+
+import javax.print.DocFlavor.STRING;
 
 public class WeatherDAO{
 	// DTO : Data Transfer Object
@@ -61,5 +65,36 @@ public class WeatherDAO{
 			}
 		return result;	
 		}
+		//add
+		Scanner sc = new Scanner(System.in);
+		public void add(WeatherDTO weatherDTO) throws Exception {
+			//도시명-기온-상태-습도
+			
+			File file = new File("C:\\study\\Weather.txt");
+			FileWriter fw = new FileWriter(file);
+			
+			List<WeatherDTO> ar= this.getWeathers();
+			weatherDTO.setNum(ar.size()+1);
+			
+			String data = weatherDTO.getNum()+","+weatherDTO.getCity()+"-"+ weatherDTO.getGion()
+			+"-"+weatherDTO.getStatus()+"-"+weatherDTO.getHuminity();
+			
+			fw.write(data);
+			fw.close();
+			
+//			StringBuffer sb = new StringBuffer();
+//			sb.append(ar.size()+1);
+//			sb.append("-");
+//			sb.append(weatherDTO.getCity());
+//			sb.append("-");
+//			sb.append(weatherDTO.getGion());
+//			sb.append("-");
+//			sb.append(weatherDTO.getHuminity());
+//			sb.append("-");
+//			sb.append(weatherDTO.getStatus());
+			
+			
+		}
+		
 		
 }

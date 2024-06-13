@@ -1,5 +1,6 @@
 package com.winter.home.weather;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.StringTokenizer;
@@ -41,6 +42,15 @@ public class WeatherService {
 		}
 		return weatherDTO;
 	}
-	
+	//add
+	public void add(WeatherDTO weatherDTO){
+		try {
+			weatherDAO.add(weatherDTO);
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 
 }

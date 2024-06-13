@@ -30,7 +30,7 @@ public class StudentService {
 	public StudentDTO getDetail(StudentDTO studentDTO) {
 		
 		try {
-			StudentDTO studnetDTO = studentDAO.getDetail(studentDTO);
+			studentDTO = studentDAO.getDetail(studentDTO);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
