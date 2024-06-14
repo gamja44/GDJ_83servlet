@@ -52,5 +52,10 @@ public class WeatherService {
 			e.printStackTrace();
 		}
 	}
+	//delete
+	public void delete() {
+		
+	}
+	
 
 }

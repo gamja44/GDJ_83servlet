@@ -54,6 +54,12 @@ public class WeatherController {
 				weatherDTO.setStatus(status);
 				
 				ws.add(weatherDTO);
+				//응답을 보내줘야한다
+				List<WeatherDTO> ar = ws.getWeathers();
+				
+				action.setPath("./list");
+				action.setFlag(false);
+				
 				
 				
 			}else {
@@ -63,8 +69,11 @@ public class WeatherController {
 			
 
 		} else if (uri.equals("delete")) {
+			//System.out.println("delete발생");
 			
-
+			
+			
+			
 		} else if (uri.equals("detail")) {
 			
 			String num = request.getParameter("num");
@@ -80,8 +89,21 @@ public class WeatherController {
 				action.setPath("/WEB-INF/views/commons/message.jsp");
 			}
 			
-		} else {
+		} else if(uri.equals("update")) {
+			
+			if(method.toUpperCase().equals("POST")) {
+					
+				
+			}else {
 
+				WeatherDTO weatherDTO = new WeatherDTO();
+				weatherDTO.setNum(Long.parseLong(request.getParameter("num")));
+				weatherDTO = ws.getDetail(weatherDTO);
+				request.setAttribute("dto", weatherDTO);
+				action.setPath("/WEB-INF/views/weather/update.jsp");
+			}
+		}else {
+			
 		}
 
 		return action;
