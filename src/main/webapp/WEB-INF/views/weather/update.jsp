@@ -19,20 +19,18 @@
 			
 			<div>
 				<label>기온</label>
-				<input type="text" name="gion">
+				<input type="text" name="gion" value="${dto.gion}">
 			</div>
 			
 			<div>
 				<label>습도</label>
-				<input type="text" name="huminity">
+				<input type="text" name="huminity" value="${dto.huminity}">
 			</div>
 			
 			<div>
 				<label>날씨</label>
-				<input type="text" name="status">
+				<input type="text" name="status" >
 			</div>
-		
-		
 		
 		<input type="submit" value="등록">
 		<button type="submit">등록</button>

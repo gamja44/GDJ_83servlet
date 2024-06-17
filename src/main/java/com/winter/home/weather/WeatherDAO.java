@@ -34,6 +34,9 @@ public class WeatherDAO{
 				if (s == null) {
 					break;
 				}
+				if(s.isEmpty()) {
+					continue;
+				}
 				WeatherDTO weatherDTO = new WeatherDTO();
 				s = s.replace(",", "-");
 				s = s.replace(".", "-");
@@ -146,7 +149,43 @@ public class WeatherDAO{
 				fw.write(stringBuffer.toString()+"\r\n");
 				fw.flush();
 		}	
+			//update
+		public void update(WeatherDTO weatherDTO) throws Exception {
+			List<WeatherDTO> ar = this.getWeathers();
+			//add(object);
+			//add(index, object); 삽입
+			//set(index, object); 수정
+			for(int i=0;i<ar.size();i++) {
+				if(weatherDTO.getNum()==ar.get(i).getNum()) {
+					ar.get(i).setCity(weatherDTO.getCity());
+					ar.set(i, weatherDTO);
+				}
+			}
+			File file = new File("C:\\study\\Weather.txt");
+			FileWriter fw = new FileWriter(file, false);
 			
+			//도시명-기온-습도-상태
+			StringBuffer stringBuffer = new StringBuffer();
+			for(WeatherDTO dto : ar) {
+				//중복을 피하기위해서 시간을 넣어준다
+				Calendar ca = Calendar.getInstance();
+				stringBuffer.append(ca.getTimeInMillis());
+				stringBuffer.append("-");
+				stringBuffer.append(dto.getNum());
+				stringBuffer.append("-");
+				stringBuffer.append(weatherDTO.getCity());
+				stringBuffer.append("-");
+				stringBuffer.append(weatherDTO.getGion());
+				stringBuffer.append("-");
+				stringBuffer.append(weatherDTO.getStatus());
+				stringBuffer.append("-");
+				stringBuffer.append(weatherDTO.getHuminity());
+				stringBuffer.append("\r\n");
+			}
+			fw.write(stringBuffer.toString()+"\r\n");
+			fw.flush();
+			
+		}
 		
 			
 			

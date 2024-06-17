@@ -70,13 +70,21 @@ public class WeatherController {
 
 		} else if (uri.equals("delete")) {
 			//System.out.println("delete발생");
-			
+			if(method.equals("POST")) {
+				String num = request.getParameter("num");
+				WeatherDTO weatherDTO = new WeatherDTO();
+				weatherDTO.setNum(Long.parseLong(num));
+				ws.delete(weatherDTO);
+				action.setPath("./list");
+				action.setFlag(false);
+				
+			}
 			
 			
 			
 		} else if (uri.equals("detail")) {
 			
-			String num = request.getParameter("num");
+			String num = request.getParameter("num");//null
 			WeatherDTO weatherDTO = new WeatherDTO();
 			weatherDTO.setNum(Long.parseLong(num));
 			weatherDTO = ws.getDetail(weatherDTO);
@@ -92,7 +100,22 @@ public class WeatherController {
 		} else if(uri.equals("update")) {
 			
 			if(method.toUpperCase().equals("POST")) {
-					
+				WeatherDTO weatherDTO = new WeatherDTO();
+				weatherDTO.setNum(Long.parseLong(request.getParameter("num")));	
+				
+				String city = request.getParameter("city");
+				double gion = Double.parseDouble(request.getParameter("gion"));
+				Integer huminity = Integer.parseInt(request.getParameter("huminity"));
+				String status = request.getParameter(request.getParameter("status"));
+				weatherDTO.setCity(city);
+				weatherDTO.setGion(gion);
+				weatherDTO.setHuminity(huminity);
+				weatherDTO.setStatus(status);
+				
+				ws.update(weatherDTO);
+				
+				action.setFlag(false);
+				action.setPath("./list");
 				
 			}else {
 
